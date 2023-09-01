@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html style="width: 100%; height: 100%;">
+
+<head>
+
+	<script>
+		function save() {
+			let send_data = {
+				link: document.getElementById('link').value,
+				description: document.getElementById('description').value
+			}
+			console.log(send_data);
+			fetch('create/', {
+				method: 'POST',
+				headers: {
+					'Accept': 'application/json, text/plain, */*',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(send_data)
+			}).then(res => res.json())
+				.then(res => console.log(res));
+			alert("Data in the base!");
+		}
+
+		function goToHistoryPage() {
+			document.location.href = 'history.html';
+		}
+	</script>
+
+	<style type="text/css">
+		.main_div {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+		}
+
+		.main_div>div {
+			margin: 5px;
+		}
+
+		.goToHistoryPage {
+			display: flex;
+			justify-content: right;
+		}
+	</style>
+
+	<title>Links</title>
+</head>
+
+<body style="width: 100%; height: 100%; margin: 0;">
+
+	<div class="goToHistoryPage">
+		<button onclick="goToHistoryPage()">History</button>
+	</div>
+
+	<div class="main_div">
+		<div>
+			<input name="link" id="link" style="width: 600px;" type:"text" placeholder="Link">
+		</div>
+		<div>
+			<input name="description" id="description" style="width: 600px;" type:"text" placeholder="Description">
+		</div>
+		<div>
+			<button onclick="save()" type="submit">Send</button>
+		</div>
+	</div>
+
+	</form>
+</body>
+
+</html>

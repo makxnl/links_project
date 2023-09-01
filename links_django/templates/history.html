@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html style="width: 100%; height: 100%;">
+<head>
+
+	<script>
+		function goToMainPage() {
+		document.location.href = '/';
+	}
+	</script>
+
+	<style type="text/css">
+		.main_div {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+		}
+		.main_div > div {
+			margin: 5px;
+
+		.goToHistoryPage {
+			display: flex;
+			justify-content: right;	
+		}
+
+	</style>
+
+	<title>History</title>
+</head>
+
+<body style="width: 100%; height: 100%; margin: 0;">
+
+<div class="goToHistoryPage">
+	<button onclick="goToMainPage()" name="button">Back</button></div>
+</div>
+
+<div class="main_div">
+	{%for i in data%}
+	{{i.description}}
+	<br>
+	<a href="{{i.link}}">{{i.link}}</a>
+	<p>---------------------------------------------------------------------------------</p>
+	{%endfor%}
+</div>
+</body>
+</html>
